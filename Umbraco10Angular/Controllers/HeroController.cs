@@ -11,6 +11,7 @@ using System.Text.Json;
 using Umbraco10Angular.Models;
 using System.Reflection;
 using Umbraco.Cms.Core.Models;
+using Umbraco.Cms.Core.Mapping;
 
 namespace Umbraco10Angular.Controllers
 {
@@ -18,18 +19,20 @@ namespace Umbraco10Angular.Controllers
     public class HeroController : UmbracoApiController
     {
         private IContentService _contentService;
+        private UmbracoMapper _mapper;
 
-        public HeroController(IContentService contentService)
+        public HeroController(IContentService contentService, UmbracoMapper mapper)
         {
             _contentService = contentService;
+            _mapper = mapper;
         }
 
-      
+
         public List<Hero> GetAllHeroes()
         {
-            var content = _contentService.GetRootContent().FirstOrDefault();
+            var content = _contentService.GetRootContent().ToList().FirstOrDefault();
             var heroList = content.GetValue("heroList").ToString();
-
+           // _mapper.Map<>
           //  List<Hero>  heroes = JsonConvert.DeserializeObject<List<Hero>>(heroList);
             var heroes = JsonSerializer.Deserialize<List<Hero>>(heroList);
             return heroes;
@@ -40,8 +43,8 @@ namespace Umbraco10Angular.Controllers
         {
             var content = _contentService.GetRootContent().FirstOrDefault();
             var heroList = content.GetValue("heroList").ToString();
-            List<Hero> heroes = JsonConvert.DeserializeObject<List<Hero>>(heroList);
-            //    var parentNode = content.Properties;
+            List<Hero> heroes = JsonSerializer.Deserialize<List<Hero>>(heroList);
+
             //  var parentId = content.GetUdi();
 
             //IContent request = _contentService.CreateContent("new node", parentId, "hero", -1);
@@ -60,7 +63,7 @@ namespace Umbraco10Angular.Controllers
         
 
 
-              content.SetValue("heroList", JsonConvert.SerializeObject(heroes));
+              content.SetValue("heroList", JsonSerializer.Serialize(heroes));
 
 
           //  request.SetValue("hero", JsonConvert.SerializeObject(newhero));

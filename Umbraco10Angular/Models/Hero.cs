@@ -1,6 +1,6 @@
 ﻿namespace Umbraco10Angular.Models
 {
-    public class Hero
+    public class Hero 
     {
         public string key { get; set; }
         public string name { get; set; }

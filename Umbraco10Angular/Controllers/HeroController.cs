@@ -7,7 +7,7 @@ using Umbraco.Cms.Core.Services;
 using Umbraco.Cms.Web.Common.Controllers;
 
 using System.Text.Json;
-using Newtonsoft.Json;
+
 using Umbraco10Angular.Models;
 using System.Reflection;
 using Umbraco.Cms.Core.Models;
@@ -30,8 +30,8 @@ namespace Umbraco10Angular.Controllers
             var content = _contentService.GetRootContent().FirstOrDefault();
             var heroList = content.GetValue("heroList").ToString();
 
-            List<Hero>  heroes = JsonConvert.DeserializeObject<List<Hero>>(heroList);
-       
+          //  List<Hero>  heroes = JsonConvert.DeserializeObject<List<Hero>>(heroList);
+            var heroes = JsonSerializer.Deserialize<List<Hero>>(heroList);
             return heroes;
         }
 

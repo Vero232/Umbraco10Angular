@@ -476,3 +476,4 @@ appsettings-schema.json
 
 # Media files
 /wwwroot/media/
+/angular-tour-of-heroes/node_modules

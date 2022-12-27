@@ -16,32 +16,39 @@ using System.Runtime.Serialization;
 
 using Umbraco.Cms.Core;
 using Umbraco.Cms.Core.Mapping;
+
+using System.Xml;
+using System.Data;
+using System.Text;
 using Umbraco10Angular.DataAccess;
 
 namespace Umbraco10Angular.Controllers
 {
     //~/Umbraco/Api/Hero/GetSomeData
-    public class HeroController : UmbracoApiController
+    public class HeroExportController : UmbracoApiController
     {
         private IContentService _contentService;
-        HeroDataAccess _heroDataAccess;
+        HeroDataAccess _heroDataAcess;
+        HeroExportDataAccess _heroExportDataAccess;
 
-
-        public HeroController(IContentService contentService)
+        public HeroExportController(IContentService contentService)
         {
             _contentService = contentService;
-            _heroDataAccess = DataAccessFactory.GetHeroDataAccessObj();
-
+            _heroDataAcess = DataAccessFactory.GetHeroDataAccessObj();
+            _heroExportDataAccess = DataAccessFactory.ExportHeroesObj();
         }
 
 
-        public List<Hero> GetAllHeroes()
+        public FileResult ExportHeroes()
         {
 
             var content = _contentService.GetRootContent().FirstOrDefault();
 
-            return _heroDataAccess.GetAllHeroes(content);
-        }
+            var ListOfHeroes = _heroDataAcess.GetAllHeroes(content);
+            var heroesString = _heroExportDataAccess.ExportHeroes(ListOfHeroes);
 
+
+            return File(new UTF8Encoding().GetBytes(heroesString.ToString()), "text/csv", "exportHeroes.csv");
+        }
     }
 }

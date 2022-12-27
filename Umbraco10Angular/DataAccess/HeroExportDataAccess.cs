@@ -1,0 +1,28 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using System.Text;
+using System.Text.Json;
+using Umbraco.Cms.Core.Models;
+using Umbraco10Angular.Interfaces;
+using Umbraco10Angular.Models;
+
+namespace Umbraco10Angular.DataAccess
+{
+    public class HeroExportDataAccess : IHeroExport
+    {
+        public StringBuilder ExportHeroes(List<Hero> ListOfHeroes)
+        {
+
+            var sb = new StringBuilder();
+            sb.AppendLine("Heroes Names");
+            foreach (var data in ListOfHeroes)
+            {
+                sb.AppendLine(data.heroName);
+            }
+
+
+            return sb;
+        }
+
+
+    }
+}

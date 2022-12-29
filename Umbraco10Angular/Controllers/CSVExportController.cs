@@ -25,13 +25,13 @@ using Umbraco10Angular.DataAccess;
 namespace Umbraco10Angular.Controllers
 {
     //~/Umbraco/Api/Hero/GetSomeData
-    public class HeroExportController : UmbracoApiController
+    public class CSVExportController : UmbracoApiController
     {
         private IContentService _contentService;
         HeroDataAccess _heroDataAcess;
         HeroExportDataAccess _heroExportDataAccess;
 
-        public HeroExportController(IContentService contentService)
+        public CSVExportController(IContentService contentService)
         {
             _contentService = contentService;
             _heroDataAcess = DataAccessFactory.GetHeroDataAccessObj();

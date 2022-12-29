@@ -12,16 +12,6 @@ namespace Umbraco10Angular.Models
         public string PropType { get; set; }
         public string heroName { get; set; }
 
-        //public List<Hero> GetHeroes(IContent content)
-        //{
-        //    var heroList = content.GetValue("heroList").ToString();
-        //    var heroes = JsonSerializer.Deserialize<List<Hero>>(heroList);
-        //    return heroes;
-        //}
-
-
-
-
     }
     
 }

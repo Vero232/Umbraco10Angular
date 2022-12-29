@@ -7,9 +7,9 @@
             return new HeroDataAccess();
         }
 
-        public static HeroExportDataAccess ExportHeroesObj()
+        public static CSVExportDataAccess ExportHeroesObj()
         {
-            return new HeroExportDataAccess();
+            return new CSVExportDataAccess();
         }
     }
 }

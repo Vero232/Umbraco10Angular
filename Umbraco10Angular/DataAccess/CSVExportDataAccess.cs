@@ -7,7 +7,7 @@ using Umbraco10Angular.Models;
 
 namespace Umbraco10Angular.DataAccess
 {
-    public class HeroExportDataAccess : IHeroExport
+    public class CSVExportDataAccess : IHeroExport
     {
         public StringBuilder ExportHeroes(List<Hero> ListOfHeroes)
         {

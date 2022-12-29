@@ -29,7 +29,7 @@ namespace Umbraco10Angular.Controllers
     {
         private IContentService _contentService;
         HeroDataAccess _heroDataAcess;
-        HeroExportDataAccess _heroExportDataAccess;
+        CSVExportDataAccess _heroExportDataAccess;
 
         public CSVExportController(IContentService contentService)
         {

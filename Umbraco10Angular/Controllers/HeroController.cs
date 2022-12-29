@@ -43,5 +43,20 @@ namespace Umbraco10Angular.Controllers
             return _heroDataAccess.GetAllHeroes(content);
         }
 
+        [HttpPost]
+        public IActionResult CreateHero(Hero hero)
+        {
+            var content = _contentService.GetRootContent().FirstOrDefault();
+
+            var heroes = _heroDataAccess.CreateSuperHero(hero, content);
+
+            content.SetValue("heroList", JsonSerializer.Serialize(heroes));
+
+            _contentService.SaveAndPublish(content);
+
+            return Ok();
+
+        }
+
     }
 }

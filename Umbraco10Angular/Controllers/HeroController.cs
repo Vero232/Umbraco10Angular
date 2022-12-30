@@ -17,14 +17,18 @@ using System.Runtime.Serialization;
 using Umbraco.Cms.Core;
 using Umbraco.Cms.Core.Mapping;
 using Umbraco10Angular.DataAccess;
+using Umbraco10Angular.Interfaces;
 
 namespace Umbraco10Angular.Controllers
 {
     //~/Umbraco/Api/Hero/GetSomeData
+  //  implement a high-level component
+ //   HeroController that also implements the interface ICustomerDataAccess.
+ //    Notice that our high-level component does not implement our low-level component but merely uses it.
     public class HeroController : UmbracoApiController
     {
         private IContentService _contentService;
-        HeroDataAccess _heroDataAccess;
+        IHero _heroDataAccess;
 
 
         public HeroController(IContentService contentService)

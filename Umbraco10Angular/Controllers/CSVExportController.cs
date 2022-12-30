@@ -21,6 +21,7 @@ using System.Xml;
 using System.Data;
 using System.Text;
 using Umbraco10Angular.DataAccess;
+using Umbraco10Angular.Interfaces;
 
 namespace Umbraco10Angular.Controllers
 {
@@ -28,8 +29,8 @@ namespace Umbraco10Angular.Controllers
     public class CSVExportController : UmbracoApiController
     {
         private IContentService _contentService;
-        HeroDataAccess _heroDataAcess;
-        CSVExportDataAccess _heroExportDataAccess;
+        IHero _heroDataAcess;
+        IHeroExport _heroExportDataAccess;
 
         public CSVExportController(IContentService contentService)
         {

@@ -4,6 +4,7 @@
     {
         public static HeroDataAccess GetHeroDataAccessObj()
         {
+           // The returned HeroDataAccess class is our low-level component.
             return new HeroDataAccess();
         }
 

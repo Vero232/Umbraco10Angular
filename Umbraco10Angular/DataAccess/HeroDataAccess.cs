@@ -7,7 +7,8 @@ namespace Umbraco10Angular.DataAccess
 {
     public class HeroDataAccess : IHero
     {
-
+       // implement details that will depend on the IHero interface. 
+        //Doing so achieves the second part of the DIP principle.
         public List<Hero> GetAllHeroes(IContent content)
         {
             var heroList = content.GetValue("heroList").ToString();

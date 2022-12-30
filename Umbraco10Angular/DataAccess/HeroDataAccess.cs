@@ -7,6 +7,7 @@ namespace Umbraco10Angular.DataAccess
 {
     public class HeroDataAccess : IHero
     {
+        //Low Level - depends on abstraction
        // implement details that will depend on the IHero interface. 
         //Doing so achieves the second part of the DIP principle.
         public List<Hero> GetAllHeroes(IContent content)

@@ -20,6 +20,32 @@ namespace Umbraco10Angular.DataAccess
             return heroes;
         }
 
+        public List<BaseHero> CreateHero(CommonHero hero, IContent content) {
+
+
+            var heroList = content.GetValue("heroList").ToString();
+
+            List<BaseHero> heroes = JsonSerializer.Deserialize<List<BaseHero>>(heroList);
+
+            string id = Guid.NewGuid().ToString();
+
+
+            BaseHero commonHero = new SuperHero
+            {
+                ncContentTypeAlias = "hero",
+                PropType = null,
+                key = id,
+                heroName = hero.heroName,
+               
+
+            };
+
+            heroes.Add(commonHero);
+
+
+            return heroes;
+
+        }
         public List<BaseHero> CreateSuperHero(SuperHero hero, IContent content)
         {
 

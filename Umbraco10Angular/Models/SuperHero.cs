@@ -4,16 +4,9 @@ using Umbraco10Angular.Interfaces;
 
 namespace Umbraco10Angular.Models
 {
-    public class SuperHero : Hero
-    {
-        //public override int CalcHeroBravery()
-        public int CalcHeroBravery()
-        {
-            
-            return livesSaved + strength;
-        }
-
-
+    public class SuperHero : BaseHero
+    {            
+        public string superPower { get; set; }
     }
 
 }

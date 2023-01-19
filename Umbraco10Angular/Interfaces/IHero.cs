@@ -4,10 +4,13 @@ using Umbraco10Angular.Models;
 
 namespace Umbraco10Angular.Interfaces
 {
-    public interface IHero 
+    public interface IHero
     {
-        public List<Hero> GetAllHeroes(IContent content);
+        //abstraction
+        public List<BaseHero> GetAllHeroes(IContent content);
 
-        public List<Hero> CreateSuperHero(Hero hero, IContent content);
+        public List<SuperHero> CreateSuperHero(SuperHero hero, IContent content);
+
+        public List<CommonHero> CreateHero(CommonHero hero, IContent content);
     }
 }

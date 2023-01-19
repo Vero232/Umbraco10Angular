@@ -9,7 +9,7 @@ namespace Umbraco10Angular.DataAccess
 {
     public class CSVExportDataAccess : IHeroExport
     {
-        public StringBuilder ExportHeroes(List<Hero> ListOfHeroes)
+        public StringBuilder ExportHeroes(List<CommonHero> ListOfHeroes)
         {
 
             var sb = new StringBuilder();

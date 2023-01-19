@@ -39,7 +39,7 @@ namespace Umbraco10Angular.Controllers
         }
 
 
-        public List<Hero> GetAllHeroes()
+        public List<BaseHero> GetAllHeroes()
         {
 
             var content = _contentService.GetRootContent().FirstOrDefault();
@@ -48,7 +48,22 @@ namespace Umbraco10Angular.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateHero(Hero hero)
+        public IActionResult CreateHero(CommonHero hero)
+        {
+            var content = _contentService.GetRootContent().FirstOrDefault();
+
+            var heroes = _heroDataAccess.CreateHero(hero, content);
+
+            content.SetValue("heroList", JsonSerializer.Serialize(heroes));
+
+            _contentService.SaveAndPublish(content);
+
+            return Ok();
+
+        }
+
+        [HttpPost]
+        public IActionResult CreateSuperHero(SuperHero hero)
         {
             var content = _contentService.GetRootContent().FirstOrDefault();
 

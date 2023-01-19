@@ -10,38 +10,35 @@ namespace Umbraco10Angular.DataAccess
         //Low Level - depends on abstraction
        // implement details that will depend on the IHero interface. 
         //Doing so achieves the second part of the DIP principle.
-        public List<Hero> GetAllHeroes(IContent content)
+        public List<BaseHero> GetAllHeroes(IContent content)
         {
             var heroList = content.GetValue("heroList").ToString();
 
-            var heroes = JsonSerializer.Deserialize<List<Hero>>(heroList);
+            var heroes = JsonSerializer.Deserialize<List<BaseHero>>(heroList);
 
 
             return heroes;
         }
 
-        public List<Hero> CreateSuperHero(Hero hero, IContent content)
+        public List<BaseHero> CreateSuperHero(SuperHero hero, IContent content)
         {
 
             var heroList = content.GetValue("heroList").ToString();
 
-            List<Hero> heroes = JsonSerializer.Deserialize<List<Hero>>(heroList);
+            List<BaseHero> heroes = JsonSerializer.Deserialize<List<BaseHero>>(heroList);
 
             string id = Guid.NewGuid().ToString();
 
 
-            Hero superHero = new SuperHero { 
+            BaseHero superHero = new SuperHero { 
                 ncContentTypeAlias = "hero", 
                 PropType = null, 
                 key = id, 
-                heroName = hero.heroName, 
-              //  weight = hero.weight, 
-               // heroType = hero.heroType,
-            //    strength = hero.strength,
-             //   livesSaved = hero.livesSaved,
+                heroName = hero.heroName,
+                superPower = hero.superPower
 
             };
-            
+
             heroes.Add(superHero);
 
 

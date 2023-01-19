@@ -7,6 +7,6 @@ namespace Umbraco10Angular.Interfaces
 {
     public interface IHeroExport 
     {
-        public StringBuilder ExportHeroes(List<Hero> ListOfHeroes);
+        public StringBuilder ExportHeroes(List<CommonHero> ListOfHeroes);
     }
 }

@@ -9,8 +9,8 @@ namespace Umbraco10Angular.Interfaces
         //abstraction
         public List<BaseHero> GetAllHeroes(IContent content);
 
-        public List<SuperHero> CreateSuperHero(SuperHero hero, IContent content);
+        public List<BaseHero> CreateSuperHero(SuperHero hero, IContent content);
 
-        public List<CommonHero> CreateHero(CommonHero hero, IContent content);
+        public List<BaseHero> CreateHero(CommonHero hero, IContent content);
     }
 }

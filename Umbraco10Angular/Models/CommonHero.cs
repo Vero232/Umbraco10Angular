@@ -8,11 +8,10 @@ namespace Umbraco10Angular.Models
     public class CommonHero : BaseHero, IAssignLeader
     {
         public ILeader Leader { get; set; }
-
-
+       
         public void AssignLeader(ILeader leader)
         {
-            Leader = leader;
+           Leader = leader;
         }
     }
 

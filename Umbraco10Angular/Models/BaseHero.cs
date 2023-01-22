@@ -12,6 +12,6 @@ namespace Umbraco10Angular.Models
         public string ncContentTypeAlias { get; set; }
         public string PropType { get;set; }
         public string heroName { get; set; }
-
+        public string task { get; set; } = "None";
     }
 }

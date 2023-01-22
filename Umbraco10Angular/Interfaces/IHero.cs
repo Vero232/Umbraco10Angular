@@ -12,5 +12,6 @@ namespace Umbraco10Angular.Interfaces
          string ncContentTypeAlias { get; set; }
          string PropType { get; set; }
          string heroName { get; set; }
+         string task { get; set; }
     }
 }

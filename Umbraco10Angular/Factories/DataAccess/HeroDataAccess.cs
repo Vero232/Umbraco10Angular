@@ -31,14 +31,11 @@ namespace Umbraco10Angular.DataAccess
 
 
             IHero commonHero = CreateHeroFactory.CreateCommonHero();
- 
+
             commonHero.ncContentTypeAlias = "hero";
             commonHero.PropType = null;
             commonHero.key = id;
             commonHero.heroName = hero.heroName;
-
-
-            heroes.Add(commonHero);
 
 
             return commonHero;

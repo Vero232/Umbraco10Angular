@@ -13,9 +13,14 @@ namespace Umbraco10Angular.Models
         public string PropType { get;set; }
         public string heroName { get; set; }
 
-        public void AssignDuties()
+
+        public void AssignTask()
         {
-            throw new NotImplementedException();
+          
         }
+        //public void AssignTask(IHero hero)
+        //{
+        //    hero.task = "Save People";
+        //}
     }
 }

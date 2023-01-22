@@ -4,6 +4,7 @@ namespace Umbraco10Angular.Models
 {
     public interface ILeader : IHero
     {
-        void AssignDuties();
+        void AssignTask();
+        //void AssignTask(IHero hero);
     }
 }

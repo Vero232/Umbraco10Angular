@@ -5,25 +5,14 @@ using Umbraco10Angular.Interfaces;
 
 namespace Umbraco10Angular.Models
 {
-    public class CommonHero : BaseHero
+    public class CommonHero : BaseHero, IAssignLeader
     {
-        public string strength { get; set; }
-        public string department { get; set; }
+        public ILeader Leader { get; set; }
 
-        public void AssignDepartment(string strength)
+
+        public void AssignLeader(ILeader leader)
         {
-            switch (strength)
-            {
-                case "Fast":
-                    department = "Police Department";
-                    break;
-                case "Strong":
-                    department = "Fire Department";
-                    break;
-                default:
-                    department = "None";
-                    break;
-            }
+            Leader = leader;
         }
     }
 

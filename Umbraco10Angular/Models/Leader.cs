@@ -5,7 +5,7 @@ using Umbraco10Angular.Interfaces;
 
 namespace Umbraco10Angular.Models
 {
-    public class BaseHero : IHero
+    public class Leader : BaseHero, ILeader
     {
         public string key { get; set; }
         public string name { get; set; }
@@ -13,5 +13,9 @@ namespace Umbraco10Angular.Models
         public string PropType { get;set; }
         public string heroName { get; set; }
 
+        public void AssignDuties()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

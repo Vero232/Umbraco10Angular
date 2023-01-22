@@ -4,8 +4,8 @@ using Umbraco10Angular.Interfaces;
 
 namespace Umbraco10Angular.Models
 {
-    public class SuperHero : BaseHero
-    {            
+    public class SuperHero : CommonHero, ISuperHero
+    {
         public string superPower { get; set; }
     }
 

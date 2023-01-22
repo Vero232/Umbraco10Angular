@@ -10,6 +10,9 @@
     <EmbeddedResource Remove="angular-tour-of-heroes\**" />
     <None Remove="angular-tour-of-heroes\**" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Models\HomePage.cs" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Umbraco.Cms" Version="10.3.2" />

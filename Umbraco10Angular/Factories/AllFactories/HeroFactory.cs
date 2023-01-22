@@ -1,6 +1,9 @@
-﻿namespace Umbraco10Angular.DataAccess
+﻿using Umbraco10Angular.Interfaces;
+using Umbraco10Angular.Models;
+
+namespace Umbraco10Angular.DataAccess
 {
-    public class DataAccessFactory
+    public class HeroFactory
     {
         public static HeroDataAccess GetHeroDataAccessObj()
         {
@@ -8,9 +11,8 @@
             return new HeroDataAccess();
         }
 
-        public static CSVExportDataAccess ExportHeroesObj()
-        {
-            return new CSVExportDataAccess();
-        }
+   
+
+
     }
 }

@@ -9,7 +9,7 @@ namespace Umbraco10Angular.DataAccess
 {
     public class CSVExportDataAccess : IHeroExport
     {
-        public StringBuilder ExportHeroes(List<CommonHero> ListOfHeroes)
+        public StringBuilder ExportHeroes(List<IHero> ListOfHeroes)
         {
 
             var sb = new StringBuilder();
@@ -22,7 +22,5 @@ namespace Umbraco10Angular.DataAccess
 
             return sb;
         }
-
-
     }
 }

@@ -28,18 +28,18 @@ namespace Umbraco10Angular.Controllers
     public class HeroController : UmbracoApiController
     {
         private IContentService _contentService;
-        IHero _heroDataAccess;
+        IHeroFeatures _heroDataAccess;
 
 
         public HeroController(IContentService contentService)
         {
             _contentService = contentService;
-            _heroDataAccess = DataAccessFactory.GetHeroDataAccessObj();
+            _heroDataAccess = HeroFactory.GetHeroDataAccessObj();
 
         }
 
 
-        public List<BaseHero> GetAllHeroes()
+        public List<IHero> GetAllHeroes()
         {
 
             var content = _contentService.GetRootContent().FirstOrDefault();
@@ -47,33 +47,18 @@ namespace Umbraco10Angular.Controllers
             return _heroDataAccess.GetAllHeroes(content);
         }
 
-        [HttpPost]
-        public IActionResult CreateHero(CommonHero hero)
+
+        public IHero CreateCommonHero(CommonHero hero)
         {
             var content = _contentService.GetRootContent().FirstOrDefault();
 
-            var heroes = _heroDataAccess.CreateHero(hero, content);
+            var Hero = _heroDataAccess.CreateCommonHero(hero, content);
 
-            content.SetValue("heroList", JsonSerializer.Serialize(heroes));
-
-            _contentService.SaveAndPublish(content);
-
-            return Ok();
-
-        }
-
-        [HttpPost]
-        public IActionResult CreateSuperHero(SuperHero hero)
-        {
-            var content = _contentService.GetRootContent().FirstOrDefault();
-
-            var heroes = _heroDataAccess.CreateSuperHero(hero, content);
-
-            content.SetValue("heroList", JsonSerializer.Serialize(heroes));
+            content.SetValue("heroList", JsonSerializer.Serialize(Hero));
 
             _contentService.SaveAndPublish(content);
 
-            return Ok();
+            return Hero;
 
         }
 

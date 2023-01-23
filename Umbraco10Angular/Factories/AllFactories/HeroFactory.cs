@@ -5,10 +5,10 @@ namespace Umbraco10Angular.DataAccess
 {
     public class HeroFactory
     {
-        public static HeroDataAccess GetHeroDataAccessObj()
+        public static CreateHeroDataAccess GetHeroDataAccessObj()
         {
            // The returned HeroDataAccess class is our low-level component.
-            return new HeroDataAccess();
+            return new CreateHeroDataAccess();
         }
 
    

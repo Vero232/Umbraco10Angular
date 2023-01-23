@@ -1,25 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System.Collections;
-using System.Collections.Generic;
-using Umbraco.Cms.Core.Models.PublishedContent;
+﻿using Microsoft.AspNetCore.Mvc;
+//using Umbraco.Cms.Core.Mapping;
+using System.Text;
 using Umbraco.Cms.Core.Services;
 using Umbraco.Cms.Web.Common.Controllers;
-using Umbraco.Cms.Core.Events;
-using System.Text.Json;
-
-using Umbraco10Angular.Models;
-using System.Reflection;
-using Umbraco.Cms.Core.Models;
-//using Umbraco.Cms.Core.Mapping;
-using System.Runtime.Serialization;
-
-using Umbraco.Cms.Core;
-using Umbraco.Cms.Core.Mapping;
-
-using System.Xml;
-using System.Data;
-using System.Text;
 using Umbraco10Angular.DataAccess;
 using Umbraco10Angular.Interfaces;
 

@@ -20,12 +20,8 @@ namespace Umbraco10Angular.DataAccess
             return heroes;
         }
 
-        public IHero CreateCommonHero(IHero hero, IContent content) {
-
-
-            var heroList = content.GetValue("heroList").ToString();
-
-            List<IHero> heroes = JsonSerializer.Deserialize<List<IHero>>(heroList);
+        public IHero CreateCommonHero(IHero hero, IContent content) 
+        {
 
             string id = Guid.NewGuid().ToString();
 
@@ -37,9 +33,40 @@ namespace Umbraco10Angular.DataAccess
             commonHero.key = id;
             commonHero.heroName = hero.heroName;
 
-
             return commonHero;
 
+        }
+
+        public ISuperHero CreateSuperHero(ISuperHero hero, IContent content)
+        {
+            string id = Guid.NewGuid().ToString();
+
+
+            ISuperHero superHero = CreateHeroFactory.CreateSuperHero();
+
+            superHero.ncContentTypeAlias = "hero";
+            superHero.PropType = null;
+            superHero.key = id;
+            superHero.heroName = hero.heroName;
+
+           
+            return superHero;
+        }
+
+        public ILeader CreateHeroLeader(IHero hero, ILeader heroLeader, IContent content)
+        {
+
+            string id = Guid.NewGuid().ToString();
+
+            ILeader leader = CreateHeroFactory.CreateLeader();
+
+            leader.ncContentTypeAlias = "hero";
+            leader.PropType = null;
+            leader.key = id;
+            leader.heroName = heroLeader.heroName;
+            leader.AssignTask(hero, "save people");
+        
+            return leader;
         }
 
     }

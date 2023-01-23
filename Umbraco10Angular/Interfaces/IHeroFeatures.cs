@@ -12,9 +12,9 @@ namespace Umbraco10Angular.Interfaces
         public IHero CreateCommonHero(IHero hero, IContent content);
 
 
-        //public ILeader CreateLeader(IContent content);
+        public ILeader CreateHeroLeader(IHero hero, ILeader heroLeader, IContent content);
 
-        //public ISuperHero CreateISuperHero(IContent content);
+        public ISuperHero CreateSuperHero(ISuperHero hero, IContent content);
     }
 
 

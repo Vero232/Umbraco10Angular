@@ -14,13 +14,9 @@ namespace Umbraco10Angular.Models
         public string heroName { get; set; }
 
 
-        public void AssignTask()
+        public void AssignTask(IHero hero, string task)
         {
-          
+            hero.task = task;
         }
-        //public void AssignTask(IHero hero)
-        //{
-        //    hero.task = "Save People";
-        //}
     }
 }

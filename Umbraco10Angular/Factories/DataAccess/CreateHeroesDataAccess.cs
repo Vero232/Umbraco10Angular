@@ -5,20 +5,12 @@ using Umbraco10Angular.Models;
 
 namespace Umbraco10Angular.DataAccess
 {
-    public class HeroDataAccess : IHeroFeatures
+    public class CreateHeroesDataAccess : ICreateHeroesDataAccess
     {
         //Low Level - depends on abstraction
-       // implement details that will depend on the IHero interface. 
+        // implement details that will depend on the IHero interface. 
         //Doing so achieves the second part of the DIP principle.
-        public List<IHero> GetAllHeroes(IContent content)
-        {
-            var heroList = content.GetValue("heroList").ToString();
-
-            var heroes = JsonSerializer.Deserialize<List<IHero>>(heroList);
-
-
-            return heroes;
-        }
+  
 
         public IHero CreateCommonHero(IHero hero, IContent content) 
         {

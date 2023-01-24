@@ -15,15 +15,14 @@ namespace Umbraco10Angular.Controllers
     public class CreateHeroesController : UmbracoApiController
     {
         private IContentService _contentService;
-        IHeroFeatures _heroDataAccess;
+        ICreateHeroesDataAccess _heroDataAccess;
 
 
         public CreateHeroesController(IContentService contentService)
         {
             _contentService = contentService;
-            _heroDataAccess = HeroFactory.GetHeroDataAccessObj();
-
-        }
+            _heroDataAccess = CreateHeroesAccessFactory.GetHeroDataAccessObj();
+                    }
 
         public IHero CreateCommonHero(CommonHero hero)
         {
@@ -77,6 +76,19 @@ namespace Umbraco10Angular.Controllers
 
             //var Hero = _heroDataAccess.CreateHeroLeader(SuperHero, leader1, content);
 
+            //OCP Test
+            List<BaseHero> HEROES = new List<BaseHero>
+            {
+                new SuperHero {  },
+                new CommonHero { },
+                new Leader { },
+               // new TestHero {  } // This will break TestHero does not derive from BaseHero
+            };
+
+            //LSP Test
+            BaseHero commonHero = new CommonHero();
+            
+
             content.SetValue("heroList", JsonSerializer.Serialize(Hero));
 
             _contentService.SaveAndPublish(content);
@@ -84,6 +96,5 @@ namespace Umbraco10Angular.Controllers
             return Hero;
 
         }
-
     }
 }

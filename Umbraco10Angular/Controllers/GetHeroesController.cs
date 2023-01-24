@@ -13,13 +13,15 @@ namespace Umbraco10Angular.Controllers
     public class GetHeroesController : UmbracoApiController
     {
         private IContentService _contentService;
-        IHeroFeatures _heroDataAccess;
+        //high-level module(GetHeroesController) and low-level module(GetHeroesDataAccess)
+        //are dependent on an abstraction(IGetHeroesDataAccess).
+        IGetHeroesDataAccess _heroDataAccess;
 
 
         public GetHeroesController(IContentService contentService)
         {
             _contentService = contentService;
-            _heroDataAccess = HeroFactory.GetHeroDataAccessObj();
+            _heroDataAccess = GetHeroFactory.GetHeroDataAccessObj();
 
         }
 

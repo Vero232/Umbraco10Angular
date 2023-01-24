@@ -5,7 +5,7 @@ using Umbraco10Angular.Interfaces;
 
 namespace Umbraco10Angular.Models
 {
-    public class BaseHero : IHero
+    public abstract class BaseHero : IHero
     {
         public string key { get; set; }
         public string name { get; set; }

@@ -22,7 +22,7 @@ namespace Umbraco10Angular.Controllers
         {
             _contentService = contentService;
             _heroDataAccess = CreateHeroesAccessFactory.GetHeroDataAccessObj();
-                    }
+         }
 
         public IHero CreateCommonHero(CommonHero hero)
         {

@@ -7,11 +7,11 @@ namespace Umbraco10Angular.Interfaces
 {
     public interface IHero
     {
-         string key { get; set; }
-         string name { get; set; }
-         string ncContentTypeAlias { get; set; }
+         string Key { get; set; }
+         string Name { get; set; }
+         string ContentTypeAlias { get; set; }
          string PropType { get; set; }
-         string heroName { get; set; }
-         string task { get; set; }
+         string HeroName { get; set; }
+         string Task { get; set; }
     }
 }

@@ -7,11 +7,15 @@ namespace Umbraco10Angular.Models
 {
     public abstract class BaseHero : IHero
     {
-        public string key { get; set; }
-        public string name { get; set; }
-        public string ncContentTypeAlias { get; set; }
+        [JsonPropertyName("key")] 
+        public string Key { get; set; }
+        [JsonPropertyName("name")]
+        public string Name { get; set; }
+        [JsonPropertyName("ncContentTypeAlias")]
+        public string ContentTypeAlias { get; set; }
         public string PropType { get;set; }
-        public string heroName { get; set; }
-        public string task { get; set; } = "None";
+        [JsonPropertyName("heroName")]
+        public string HeroName { get; set; }
+        public string Task { get; set; } = "None";
     }
 }

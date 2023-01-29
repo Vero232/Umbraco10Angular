@@ -20,10 +20,10 @@ namespace Umbraco10Angular.DataAccess
 
             IHero commonHero = CreateHeroFactory.CreateCommonHero();
 
-            commonHero.ncContentTypeAlias = "hero";
+            commonHero.ContentTypeAlias = "hero";
             commonHero.PropType = null;
-            commonHero.key = id;
-            commonHero.heroName = hero.heroName;
+            commonHero.Key = id;
+            commonHero.HeroName = hero.HeroName;
 
             return commonHero;
 
@@ -36,10 +36,10 @@ namespace Umbraco10Angular.DataAccess
 
             ISuperHero superHero = CreateHeroFactory.CreateSuperHero();
 
-            superHero.ncContentTypeAlias = "hero";
+            superHero.ContentTypeAlias = "hero";
             superHero.PropType = null;
-            superHero.key = id;
-            superHero.heroName = hero.heroName;
+            superHero.Key = id;
+            superHero.HeroName = hero.HeroName;
 
            
             return superHero;
@@ -52,10 +52,10 @@ namespace Umbraco10Angular.DataAccess
 
             ILeader leader = CreateHeroFactory.CreateLeader();
 
-            leader.ncContentTypeAlias = "hero";
+            leader.ContentTypeAlias = "hero";
             leader.PropType = null;
-            leader.key = id;
-            leader.heroName = heroLeader.heroName;
+            leader.Key = id;
+            leader.HeroName = heroLeader.HeroName;
             leader.AssignTask(hero, "save people");
         
             return leader;

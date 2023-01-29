@@ -16,7 +16,7 @@ namespace Umbraco10Angular.DataAccess
             sb.AppendLine("Heroes Names");
             foreach (var data in ListOfHeroes)
             {
-                sb.AppendLine(data.heroName);
+                sb.AppendLine(data.HeroName);
             }
 
 

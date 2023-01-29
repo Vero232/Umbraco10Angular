@@ -32,7 +32,7 @@ namespace Umbraco10Angular.Controllers
 
             var content = _contentService.GetRootContent().FirstOrDefault();
 
-S
+
             //ISuperHero SuperHero = CreateHeroFactory.CreateSuperHero();
 
             //SuperHero.ncContentTypeAlias = "hero";

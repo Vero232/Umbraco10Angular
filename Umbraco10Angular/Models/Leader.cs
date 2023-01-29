@@ -11,7 +11,7 @@ namespace Umbraco10Angular.Models
       
         public void AssignTask(IHero hero, string task)
         {
-            hero.task = task;
+            hero.Task = task;
         }
     }
 }

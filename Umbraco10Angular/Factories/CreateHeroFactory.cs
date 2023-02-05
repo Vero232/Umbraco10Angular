@@ -11,12 +11,14 @@ namespace Umbraco10Angular.DataAccess
     public interface IFactory<T>: ICreate<T>
     { }
 
-    public class HeroFactory: IFactory<IHero>
+    public class CreateHeroFactory: IFactory<IBaseHero>
     {
-        public IHero Create()
+        public IBaseHero Create()
         {
             return new CommonHero();
         }
+
+
     }
 
     public class LeaderFactory: IFactory<ILeader>
@@ -34,32 +36,6 @@ namespace Umbraco10Angular.DataAccess
             return new SuperHero();
         }
     }
-    
-    public class CreateHeroFactory
-    {
-    
-
-        public static IHero CreateCommonHero()
-        {
-
-            return new CommonHero();
-
-        }
-
-        public static ILeader CreateLeader()
-        {
-
-            return new Leader();
-
-        }
-
-        public static ISuperHero CreateSuperHero()
-        {
-
-            return new SuperHero();
-
-        }
 
 
-    }
 }

@@ -5,20 +5,22 @@ using Umbraco10Angular.Models;
 
 namespace Umbraco10Angular.DataAccess
 {
-    public class CreateHeroesDataAccess : ICreateHeroesDataAccess
+    public class HeroDataAccess : IHero
     {
-        //Low Level - depends on abstraction
-        // implement details that will depend on the IHero interface. 
-        //Doing so achieves the second part of the DIP principle.
-  
+        private IHeroFactory _heroFactory;
+        public HeroDataAccess(IHeroFactory heroFactory) 
+        {
 
-        public IHero CreateCommonHero(IHero hero, IContent content) 
+            _heroFactory = heroFactory;  
+        }
+
+        public IBaseHero CreateCommonHero(IBaseHero hero, IContent content) 
         {
 
             string id = Guid.NewGuid().ToString();
 
 
-            IHero commonHero = CreateHeroFactory.CreateCommonHero();
+            IBaseHero commonHero = _heroFactory.CreateCommonHero();
 
             commonHero.ContentTypeAlias = "hero";
             commonHero.PropType = null;
@@ -34,23 +36,24 @@ namespace Umbraco10Angular.DataAccess
             string id = Guid.NewGuid().ToString();
 
 
-            ISuperHero superHero = CreateHeroFactory.CreateSuperHero();
+            ISuperHero superHero = _heroFactory.CreateSuperHero();
 
             superHero.ContentTypeAlias = "hero";
             superHero.PropType = null;
             superHero.Key = id;
             superHero.HeroName = hero.HeroName;
 
+
            
             return superHero;
         }
 
-        public ILeader CreateHeroLeader(IHero hero, ILeader heroLeader, IContent content)
+        public ILeader CreateHeroLeader(IBaseHero hero, ILeader heroLeader, IContent content)
         {
 
             string id = Guid.NewGuid().ToString();
 
-            ILeader leader = CreateHeroFactory.CreateLeader();
+            ILeader leader = _heroFactory.CreateLeader();
 
             leader.ContentTypeAlias = "hero";
             leader.PropType = null;
@@ -61,5 +64,15 @@ namespace Umbraco10Angular.DataAccess
             return leader;
         }
 
+
+        public List<IBaseHero> GetAllHeroes(IContent content)
+        {
+            var heroList = content.GetValue("heroList").ToString();
+
+            var heroes = JsonSerializer.Deserialize<List<IBaseHero>>(heroList);
+
+
+            return heroes;
+        }
     }
 }

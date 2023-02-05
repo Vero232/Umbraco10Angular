@@ -12,14 +12,14 @@ namespace Umbraco10Angular.Controllers
     public class CSVExportController : UmbracoApiController
     {
         private IContentService _contentService;
-        IGetHeroesDataAccess _heroDataAcess;
-        IHeroExport _heroExportDataAccess;
+        private IHero _heroDataAcess;
+        private IHeroExport _heroExportDataAccess;
 
-        public CSVExportController(IContentService contentService)
+        public CSVExportController(IContentService contentService, IHero heroDataAcess, IHeroExport heroExportDataAccess)
         {
             _contentService = contentService;
-            _heroDataAcess = GetHeroFactory.GetHeroDataAccessObj();
-            _heroExportDataAccess = ExportFactory.ExportHeroesObj();
+            _heroDataAcess = heroDataAcess;
+            _heroExportDataAccess = heroExportDataAccess;
         }
 
 

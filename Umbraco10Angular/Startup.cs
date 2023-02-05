@@ -1,3 +1,6 @@
+using Umbraco10Angular.DataAccess;
+using Umbraco10Angular.Interfaces;
+
 namespace Umbraco10Angular
 {
     public class Startup
@@ -34,6 +37,9 @@ namespace Umbraco10Angular
                 .AddWebsite()
                 .AddComposers()
                 .Build();
+            services.AddSingleton<IHeroExport, CSVExportDataAccess>();
+            services.AddSingleton<IHero, HeroDataAccess>();
+            services.AddSingleton<IHeroFactory, HeroFactory>();
         }
 
         /// <summary>

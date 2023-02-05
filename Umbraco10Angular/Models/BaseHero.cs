@@ -5,7 +5,7 @@ using Umbraco10Angular.Interfaces;
 
 namespace Umbraco10Angular.Models
 {
-    public abstract class BaseHero : IHero
+    public abstract class BaseHero : IBaseHero
     {
         [JsonPropertyName("key")] 
         public string Key { get; set; }

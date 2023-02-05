@@ -9,7 +9,7 @@ namespace Umbraco10Angular.Models
     public class Leader : BaseHero, ILeader
     {
       
-        public void AssignTask(IHero hero, string task)
+        public void AssignTask(IBaseHero hero, string task)
         {
             hero.Task = task;
         }

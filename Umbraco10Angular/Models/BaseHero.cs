@@ -5,17 +5,16 @@ using Umbraco10Angular.Interfaces;
 
 namespace Umbraco10Angular.Models
 {
-    public abstract class BaseHero : IBaseHero
-    {
-        [JsonPropertyName("key")] 
-        public string Key { get; set; }
-        [JsonPropertyName("name")]
-        public string Name { get; set; }
-        [JsonPropertyName("ncContentTypeAlias")]
-        public string ContentTypeAlias { get; set; }
-        public string PropType { get;set; }
-        [JsonPropertyName("heroName")]
-        public string HeroName { get; set; }
+    public class BaseHero : IBaseHero
+    { 
+        public string key { get; set; }
+
+        public string name { get; set; }
+
+        public string ncContentTypeAlias { get; set; }
+        public string PropType { get;set; } = "None";
+
+        public string heroName { get; set; }
         public string Task { get; set; } = "None";
     }
 }

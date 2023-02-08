@@ -1,11 +1,11 @@
 ﻿using Umbraco10Angular.Interfaces;
-
+using Umbraco10Angular.Models;
 
 namespace Umbraco10Angular.DataAccess
 {
     public interface IHeroFactory
     {
-        public IBaseHero CreateCommonHero();
+        public CommonHero CreateCommonHero();
 
         public ILeader CreateLeader();
 

@@ -30,8 +30,8 @@ export class HeroService {
           );
     }
     addHeroApi(hero: Hero): Observable<any> {
-      return this.http.post(`${this.api}${'/AddHero'}`, hero, this.httpOptions).pipe(
-        tap(_ => this.log(`add hero id=${hero.id}`)),
+      return this.http.post(`${this.api}${'/CreateCommonHero'}`, hero, this.httpOptions).pipe(
+        // tap(_ => this.log(`add hero id=${hero.id}`)),
         catchError(this.handleError<any>('addHero'))
       );
     }

@@ -5,14 +5,14 @@ using Umbraco10Angular.Interfaces;
 
 namespace Umbraco10Angular.Models
 {
-    public class CommonHero : BaseHero, IAssignLeader
+    public class CommonHero : BaseHero
     {
-        public ILeader Leader { get; set; }
+        //public ILeader Leader { get; set; }
        
-        public void AssignLeader(ILeader leader)
-        {
-           Leader = leader;
-        }
+        //public void AssignLeader(ILeader leader)
+        //{
+        //   Leader = leader;
+        //}
     }
 
 }

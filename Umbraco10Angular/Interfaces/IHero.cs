@@ -8,7 +8,7 @@ namespace Umbraco10Angular.Interfaces
     {
         //abstraction
  
-        public IBaseHero CreateCommonHero(IBaseHero hero, IContent content);
+        public CommonHero CreateCommonHero(CommonHero hero, IContent content);
 
         public ILeader CreateHeroLeader(IBaseHero hero, ILeader heroLeader, IContent content);
 

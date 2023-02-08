@@ -8,7 +8,7 @@ namespace Umbraco10Angular.DataAccess
     {
 
 
-        public IBaseHero CreateCommonHero()
+        public CommonHero CreateCommonHero()
         {
 
             return new CommonHero();

@@ -7,7 +7,7 @@ namespace Umbraco10Angular
     {
         private readonly IWebHostEnvironment _env;
         private readonly IConfiguration _config;
-
+        string myAllowSpecificOrigins = "_myAllowSpecificOrigins";
         /// <summary>
         /// Initializes a new instance of the <see cref="Startup" /> class.
         /// </summary>
@@ -30,13 +30,32 @@ namespace Umbraco10Angular
         /// This method gets called by the runtime. Use this method to add services to the container.
         /// For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940.
         /// </remarks>
+        /// 
+
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddUmbraco(_env, _config)
                 .AddBackOffice()
                 .AddWebsite()
+               
                 .AddComposers()
                 .Build();
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: "_myAllowSpecificOrigins", builder =>
+                {
+
+                    builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                     .SetIsOriginAllowed(origin => true)
+                    .AllowAnyHeader();
+
+
+
+
+                });
+            });
             services.AddSingleton<IHeroExport, CSVExportDataAccess>();
             services.AddSingleton<IHero, HeroDataAccess>();
             services.AddSingleton<IHeroFactory, HeroFactory>();
@@ -53,7 +72,7 @@ namespace Umbraco10Angular
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseCors(myAllowSpecificOrigins);
             app.UseUmbraco()
                 .WithMiddleware(u =>
                 {
@@ -65,7 +84,11 @@ namespace Umbraco10Angular
                     u.UseInstallerEndpoints();
                     u.UseBackOfficeEndpoints();
                     u.UseWebsiteEndpoints();
+
                 });
+        
+
+
         }
     }
 }

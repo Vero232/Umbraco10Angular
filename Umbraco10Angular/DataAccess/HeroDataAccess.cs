@@ -14,18 +14,20 @@ namespace Umbraco10Angular.DataAccess
             _heroFactory = heroFactory;  
         }
 
-        public IBaseHero CreateCommonHero(IBaseHero hero, IContent content) 
+        public CommonHero CreateCommonHero(CommonHero hero, IContent content) 
         {
 
             string id = Guid.NewGuid().ToString();
 
 
-            IBaseHero commonHero = _heroFactory.CreateCommonHero();
+            CommonHero commonHero = _heroFactory.CreateCommonHero();
 
-            commonHero.ContentTypeAlias = "hero";
-            commonHero.PropType = null;
-            commonHero.Key = id;
-            commonHero.HeroName = hero.HeroName;
+            commonHero.ncContentTypeAlias = "hero";
+            commonHero.PropType = "";
+            commonHero.key = id;
+            commonHero.heroName = hero.heroName;
+            commonHero.name = hero.heroName;
+            
 
             return commonHero;
 
@@ -38,10 +40,10 @@ namespace Umbraco10Angular.DataAccess
 
             ISuperHero superHero = _heroFactory.CreateSuperHero();
 
-            superHero.ContentTypeAlias = "hero";
+            superHero.ncContentTypeAlias = "hero";
             superHero.PropType = null;
-            superHero.Key = id;
-            superHero.HeroName = hero.HeroName;
+            superHero.key = id;
+            superHero.heroName = hero.heroName;
 
 
            
@@ -55,10 +57,10 @@ namespace Umbraco10Angular.DataAccess
 
             ILeader leader = _heroFactory.CreateLeader();
 
-            leader.ContentTypeAlias = "hero";
+            leader.ncContentTypeAlias = "hero";
             leader.PropType = null;
-            leader.Key = id;
-            leader.HeroName = heroLeader.HeroName;
+            leader.key = id;
+            leader.heroName = heroLeader.heroName;
             leader.AssignTask(hero, "save people");
         
             return leader;
@@ -69,10 +71,18 @@ namespace Umbraco10Angular.DataAccess
         {
             var heroList = content.GetValue("heroList").ToString();
 
-            var heroes = JsonSerializer.Deserialize<List<IBaseHero>>(heroList);
+            var heroes = JsonSerializer.Deserialize<List<BaseHero>>(heroList);
 
+            List<IBaseHero> baseHeroes = new List<IBaseHero>();
 
-            return heroes;
+            foreach (var item in heroes) 
+            {
+                baseHeroes.Add(item);
+            }
+
+            return baseHeroes;
         }
+
+
     }
 }

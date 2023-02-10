@@ -6,22 +6,22 @@ namespace Umbraco10Angular.DataAccess
     public interface ICreate<T>
     {
         T Create();
+        
     }
 
-    public interface IFactory<T>: ICreate<T>
+    public interface ICRUD<T>: ICreate<T>
     { }
 
-    public class CreateHeroFactory: IFactory<IBaseHero>
+    public class CreateHeroFactory: ICRUD<IBaseHero>
     {
         public IBaseHero Create()
         {
             return new CommonHero();
         }
 
-
     }
 
-    public class LeaderFactory: IFactory<ILeader>
+    public class LeaderFactory: ICRUD<ILeader>
     {
         public ILeader Create()
         {
@@ -29,7 +29,7 @@ namespace Umbraco10Angular.DataAccess
         }
     }
 
-    public class SuperHeroFactory: IFactory<ISuperHero>
+    public class SuperHeroFactory: ICRUD<ISuperHero>
     {
         public ISuperHero Create()
         {

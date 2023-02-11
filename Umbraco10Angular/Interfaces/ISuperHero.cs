@@ -2,7 +2,7 @@
 
 namespace Umbraco10Angular.Interfaces
 {
-    public interface ISuperHero : IBaseHero
+    public interface ISuperHero : IHero
     {
         string superPower { get; set; }
     }

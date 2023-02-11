@@ -5,24 +5,27 @@ using Umbraco10Angular.Models;
 
 namespace Umbraco10Angular.Service
 {
-    public class CRUDService : ICRUD<CommonHero>
+    public class CRUDService : ICRUD<Hero>
     {
         private IContentService _contentService;
 
+        public CRUDService()
+        {
+        }
 
         public CRUDService(IContentService contentService)
         {
             _contentService = contentService;
         }
 
-        public void Create(CommonHero obj)
+        public void Create(Hero obj)
         {
             var content = _contentService.GetRootContent().FirstOrDefault();
 
 
             var heroList = content.GetValue("heroList").ToString();
 
-            var heroes = JsonSerializer.Deserialize<List<CommonHero>>(heroList);
+            var heroes = JsonSerializer.Deserialize<List<Hero>>(heroList);
 
             heroes.Add(obj);
 
@@ -37,12 +40,18 @@ namespace Umbraco10Angular.Service
             throw new NotImplementedException();
         }
 
-        public CommonHero ReadAll()
+        public List<Hero> GetAll()
         {
-            throw new NotImplementedException();
+            var content = _contentService.GetRootContent().FirstOrDefault();
+
+            var heroList = content.GetValue("heroList").ToString();
+
+            var heroes = JsonSerializer.Deserialize<List<Hero>>(heroList);
+
+            return heroes;
         }
 
-        public void Update(CommonHero obj)
+        public void Update(Hero obj)
         {
             throw new NotImplementedException();
         }

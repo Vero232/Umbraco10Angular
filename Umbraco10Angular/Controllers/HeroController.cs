@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
 using Umbraco.Cms.Core.Services;
 using Umbraco.Cms.Web.Common.Controllers;
-using Umbraco10Angular.DataAccess;
 //using Umbraco.Cms.Core.Mapping;
 using Umbraco10Angular.Interfaces;
 using Umbraco10Angular.Models;
@@ -14,37 +13,28 @@ namespace Umbraco10Angular.Controllers
 
     public class HeroController : UmbracoApiController
     {
-        private IContentService _contentService;
-        private IHero _heroDataAccess;
+
+        private ICRUD<Hero> _crudService;
 
 
-        public HeroController(IContentService contentService, IHero heroesDataAccess)
+        public HeroController(ICRUD<Hero> crudService)
         {
-            _contentService = contentService;
-            _heroDataAccess = heroesDataAccess;
-
+            _crudService = crudService;
         }
 
 
 
-        public void CreateCommonHero(CommonHero hero)
+        public void CreateCommonHero(Hero hero)
         {
 
-            var CRUDService = new CRUDService(_contentService);
-
-            CRUDService.Create(hero);
+            _crudService.Create(hero);
         }
 
 
 
-        public List<IBaseHero> GetAllHeroes()
+        public List<Hero> GetAllHeroes()
         {
-
-            var content = _contentService.GetRootContent().FirstOrDefault();
-
-            var heroes = _heroDataAccess.GetAllHeroes(content);
-
-            return heroes;
+            return _crudService.GetAll();
 
         }
     }

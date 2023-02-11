@@ -5,7 +5,7 @@ using Umbraco10Angular.Models;
 
 namespace Umbraco10Angular.Service
 {
-    public class CRUDService : ICRUD<Hero>
+    public class CRUDService : ICRUD<CommonHero>
     {
         private IContentService _contentService;
 
@@ -15,18 +15,14 @@ namespace Umbraco10Angular.Service
             _contentService = contentService;
         }
 
-        public CRUDService()
-        {
-        }
-
-        public void Create(Hero obj)
+        public void Create(CommonHero obj)
         {
             var content = _contentService.GetRootContent().FirstOrDefault();
 
 
             var heroList = content.GetValue("heroList").ToString();
 
-            var heroes = JsonSerializer.Deserialize<List<Hero>>(heroList);
+            var heroes = JsonSerializer.Deserialize<List<CommonHero>>(heroList);
 
             heroes.Add(obj);
 
@@ -38,27 +34,17 @@ namespace Umbraco10Angular.Service
 
         public void Delete(int Id)
         {
-        
+            throw new NotImplementedException();
         }
 
-        public List<Hero> GetAll()
-        {
-            var content = _contentService.GetRootContent().FirstOrDefault();
-
-            var heroList = content.GetValue("heroList").ToString();
-
-            var heroes = JsonSerializer.Deserialize<List<Hero>>(heroList);
-
-            return heroes;
-
-
-        }
-
-        public void Update(Hero obj)
+        public CommonHero ReadAll()
         {
             throw new NotImplementedException();
         }
 
-
+        public void Update(CommonHero obj)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

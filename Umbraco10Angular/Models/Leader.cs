@@ -6,10 +6,10 @@ using Umbraco10Angular.Interfaces;
 namespace Umbraco10Angular.Models
 {
     //OCP - Leader Extends BaseHero  
-    public class Leader : Hero, ILeader
+    public class Leader : BaseHero, ILeader
     {
       
-        public void AssignTask(IHero hero, string task)
+        public void AssignTask(IBaseHero hero, string task)
         {
             hero.Task = task;
         }

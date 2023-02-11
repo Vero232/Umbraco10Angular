@@ -4,7 +4,7 @@
     {
 
         void Create(T obj);
-        List<T> GetAll();
+        T ReadAll();
         void Update(T obj);
         void Delete(int Id);
     }

@@ -2,9 +2,9 @@
 
 namespace Umbraco10Angular.Interfaces
 {
-    public interface ILeader : IBaseHero
+    public interface ILeader : IHero
     {
         //void AssignTask();
-        void AssignTask(IBaseHero hero, string task);
+        void AssignTask(IHero hero, string task);
     }
 }

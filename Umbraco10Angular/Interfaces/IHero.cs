@@ -7,14 +7,14 @@ namespace Umbraco10Angular.Interfaces
     public interface IHero
     {
         //abstraction
- 
-        public CommonHero CreateCommonHero(CommonHero hero, IContent content);
+        public string key { get; set; }
 
-        public ILeader CreateHeroLeader(IBaseHero hero, ILeader heroLeader, IContent content);
+        public string name { get; set; }
 
-        public ISuperHero CreateSuperHero(ISuperHero hero, IContent content);
-
-        public List<IBaseHero> GetAllHeroes(IContent content);
+        public string ncContentTypeAlias { get; set; }
+        public string PropType { get; set; }
+        public string heroName { get; set; }
+        public string Task { get; set; }
     }
 
 

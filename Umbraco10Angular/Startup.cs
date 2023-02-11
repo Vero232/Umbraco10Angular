@@ -1,5 +1,6 @@
-using Umbraco10Angular.DataAccess;
 using Umbraco10Angular.Interfaces;
+using Umbraco10Angular.Models;
+using Umbraco10Angular.Service;
 
 namespace Umbraco10Angular
 {
@@ -56,9 +57,8 @@ namespace Umbraco10Angular
 
                 });
             });
-            services.AddSingleton<IHeroExport, CSVExportDataAccess>();
-            services.AddSingleton<IHero, HeroDataAccess>();
-            services.AddSingleton<IHeroFactory, HeroFactory>();
+            services.AddSingleton<ICRUD<Hero>, CRUDService>();
+
         }
 
         /// <summary>

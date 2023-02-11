@@ -11,6 +11,7 @@
     <None Remove="angular-tour-of-heroes\**" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Remove="Factories\CSVExportDataAccess.cs" />
     <Compile Remove="Models\HomePage.cs" />
   </ItemGroup>
 

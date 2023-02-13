@@ -23,16 +23,16 @@ namespace Umbraco10Angular.Controllers
         }
 
 
-        public FileResult ExportHeroes()
-        {
+        //public FileResult ExportHeroes()
+        //{
 
-            var content = _contentService.GetRootContent().FirstOrDefault();
+        //    var content = _contentService.GetRootContent().FirstOrDefault();
 
-            var ListOfHeroes = _heroDataAcess.GetAllHeroes(content);
-            var heroesString = _heroExportDataAccess.ExportHeroes(ListOfHeroes);
+        //    var ListOfHeroes = _heroDataAcess.GetAllHeroes(content);
+        //    var heroesString = _heroExportDataAccess.ExportHeroes(ListOfHeroes);
 
 
-            return File(new UTF8Encoding().GetBytes(heroesString.ToString()), "text/csv", "exportHeroes.csv");
-        }
+        //    return File(new UTF8Encoding().GetBytes(heroesString.ToString()), "text/csv", "exportHeroes.csv");
+        //}
     }
 }

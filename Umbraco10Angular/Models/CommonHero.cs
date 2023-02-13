@@ -5,7 +5,7 @@ using Umbraco10Angular.Interfaces;
 
 namespace Umbraco10Angular.Models
 {
-    public class CommonHero : BaseHero
+    public class CommonHero : Hero
     {
         //public ILeader Leader { get; set; }
        

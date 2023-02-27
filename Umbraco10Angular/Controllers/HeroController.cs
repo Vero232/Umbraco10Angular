@@ -7,7 +7,7 @@ using Umbraco.Cms.Web.Common.Controllers;
 using Umbraco10Angular.Interfaces;
 using Umbraco10Angular.Models;
 using Umbraco10Angular.Service;
-using static Umbraco10Angular.Service.BaseCRUDService<T>;
+
 
 namespace Umbraco10Angular.Controllers
 {
@@ -43,28 +43,50 @@ namespace Umbraco10Angular.Controllers
         {
             var service = new BaseCRUDService<Hero>();
 
-            return obj.Create(service.Create, obj);
+            return obj.Create(service.Create);
 
         }
-       
 
-
-        public List<Hero> GetAllHeroes()
+        public List<Hero> GetFilteredHeroes()
         {
 
-            //var AllHeroes = new BaseCRUDService<Hero>().GetAll();
-            var service = new BaseCRUDService<Hero>();
 
-            return Get(service.GetAll);
+            var service = new BaseCRUDService<Hero>();
+            var allHeroes = service.GetAll();
+     
+            var filteredHeroes = allHeroes.FilterHeroByName((name) =>
+            {
+
+                return allHeroes.Where(x => x.heroName.Contains(name)).ToList();
+
+            }, "john");
+
+            var filteredHeroes1 = allHeroes.FilterHeroByName(Filtered, "john");
+
+            var filteredHeroes2 = allHeroes.FilterHeroByName2(Filtered, "john");
+
+            return filteredHeroes;
+
+        }
+
+        public List<Hero> Filtered(string name)
+        {
+            var service = new BaseCRUDService<Hero>();
+            var allHeroes = service.GetAll();
+
+            return allHeroes.Where(x => x.heroName.Contains(name)).ToList();
 
         }
 
         public List<T> Get<T>(Func<List<T>> function)
         {
+         
             return function();
         }
 
 
+
+     
 
         public List<Hero> GetAllHeroes1()
         {

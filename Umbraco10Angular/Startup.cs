@@ -1,3 +1,4 @@
+using Umbraco.Cms.Core.Services;
 using Umbraco10Angular.Interfaces;
 using Umbraco10Angular.Models;
 using Umbraco10Angular.Service;
@@ -40,6 +41,7 @@ namespace Umbraco10Angular
                 .AddWebsite()
                
                 .AddComposers()
+                
                 .Build();
 
             services.AddCors(options =>
@@ -57,8 +59,11 @@ namespace Umbraco10Angular
 
                 });
             });
-
-            services.AddSingleton<ICRUD<Hero>, CRUDService>();
+          
+            //services.AddSingleton<ICRUD<Hero>, CRUDService>();
+            //services.AddSingleton<ICRUD<BaseCRUDService>, HeroCRUDService>();
+            services.AddSingleton<ICRUD<Hero>, HeroCRUDService>();
+            //services.AddSingleton(typeof(ICRUD<>), typeof(BaseCRUDService<>));
         }
 
         /// <summary>

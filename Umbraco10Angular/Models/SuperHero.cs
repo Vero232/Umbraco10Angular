@@ -4,10 +4,11 @@ using Umbraco10Angular.Interfaces;
 
 namespace Umbraco10Angular.Models
 {
-    //OCP - SuperHero Extends CommonHero  
-    public class SuperHero
+ 
+    public class SuperHero : Hero
     {
         public string superPower { get; set; }
+        
     }
 
 }

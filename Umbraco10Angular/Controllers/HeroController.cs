@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq.Expressions;
 using System.Text.Json;
 using Umbraco.Cms.Core.Services;
 using Umbraco.Cms.Web.Common.Controllers;
@@ -26,55 +27,49 @@ namespace Umbraco10Angular.Controllers
         }
 
 
-        public CommonHero CreateCommonHero(CommonHero obj)
+        public Hero CreateHero(Hero hero, [FromServices] ICRUD<Hero> _crudService)
         {
-            var service = new BaseCRUDService<CommonHero>();
+ 
 
-            return Create(service.Create, obj);
-        }
-
-        public T Create<T>(Func<T, T> function, T hero)
-        {
-            return function(hero);
-        }
-
-        //using extension method
-        public Hero CreateHero(Hero obj)
-        {
-            var service = new BaseCRUDService<Hero>();
-
-            return obj.Create(service.Create);
+            return hero.Create(_crudService.Create);
 
         }
 
-        public List<Hero> GetFilteredHeroes()
+        public List<Hero> GetFilteredHeroesByName([FromServices] ICRUD<Hero> _crudService)
         {
 
 
-            var service = new BaseCRUDService<Hero>();
-            var allHeroes = service.GetAll();
-     
-            var filteredHeroes = allHeroes.FilterHeroByName((name) =>
+            List<Hero> allHeroes = _crudService.GetAll();
+
+
+            List<Hero> filteredHeroes = allHeroes.FilterHeroByName((name) =>
             {
 
                 return allHeroes.Where(x => x.heroName.Contains(name)).ToList();
 
             }, "john");
 
-            var filteredHeroes1 = allHeroes.FilterHeroByName(Filtered, "john");
 
-            var filteredHeroes2 = allHeroes.FilterHeroByName2(Filtered, "john");
+            //List<SuperHero> filteredHeroes1 = allHeroes.FilterHeroByName(Filtered, "john");
+
+            //List<SuperHero> filteredHeroes2 = allHeroes.FilterHeroByName2(Filtered, "john");
 
             return filteredHeroes;
 
         }
 
-        public List<Hero> Filtered(string name)
+        public List<SuperHero> GetFilteredSuperHeroes([FromServices] ICRUD<SuperHero> _crudService, string name)
         {
-            var service = new BaseCRUDService<Hero>();
-            var allHeroes = service.GetAll();
 
-            return allHeroes.Where(x => x.heroName.Contains(name)).ToList();
+
+            List<SuperHero> allHeroes = _crudService.GetAll();
+
+
+            List<SuperHero> filteredHeroes = allHeroes.FilterHeroes(x => x.heroName.Contains(name));
+  
+
+
+            return filteredHeroes;
 
         }
 
@@ -85,15 +80,13 @@ namespace Umbraco10Angular.Controllers
         }
 
 
-
-     
-
-        public List<Hero> GetAllHeroes1()
+        public List<SuperHero> GetAllHeroes([FromServices] ICRUD<SuperHero> _crudService)
         {
 
-            //var AllHeroes = new BaseCRUDService<Hero>().GetAll();
-            var heroes = new BaseCRUDService<Hero>(_contentService).GetAll();
-     
+
+            var heroes = _crudService.GetAll();
+
+
             return heroes;
 
         }

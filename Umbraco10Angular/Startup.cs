@@ -59,11 +59,14 @@ namespace Umbraco10Angular
 
                 });
             });
-          
-            //services.AddSingleton<ICRUD<Hero>, CRUDService>();
-            //services.AddSingleton<ICRUD<BaseCRUDService>, HeroCRUDService>();
-            services.AddSingleton<ICRUD<Hero>, HeroCRUDService>();
-            //services.AddSingleton(typeof(ICRUD<>), typeof(BaseCRUDService<>));
+
+
+            services.AddSingleton<ICRUD<Hero>, HeroCRUDService<Hero>>();
+            services.AddSingleton<ICRUD<SuperHero>, HeroCRUDService<SuperHero>>();
+            services.AddSingleton<ICRUD<Leader>, HeroCRUDService<Leader>>();
+            //services.AddSingleton<ICRUD<SuperHero>, HeroCRUDService>();
+            //services.AddSingleton<ICRUD<Leader>, HeroCRUDService>();
+
         }
 
         /// <summary>
